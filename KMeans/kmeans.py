@@ -10,8 +10,8 @@ class KMeans():
         self.centroids = None
     
     def assign_cluster(self,x):
-        distances = [euc_dist(x,c) for c in self.centroids]
-        return np.argmax(distances)
+        distances = np.array([euc_dist(x,c) for c in self.centroids])
+        return np.argmin(distances)
     
     def fit(self,X_train):
         random_indices = [random.randrange(0,len(X_train)-1) for i in range(self.k)]
